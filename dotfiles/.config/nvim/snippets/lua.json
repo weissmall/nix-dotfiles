@@ -1,0 +1,234 @@
+{
+        "Flutter separator": {
+                "prefix": "sep",
+                "body": [
+                        "/* -------------------------------------------------------------------------- */"
+                ]
+        },
+        "Elementary testWidgetModel snippet": {
+                "prefix": "testwm",
+                "body": [
+                        "testWidgetModel<$1,${2|ElementaryWidget|}>(",
+                        "\t\"$3\",",
+                        "\t${4|setupWm|},",
+                        "\t(wm, tester, context) {",
+                        "\t\t$0",
+                        "\t},",
+                        ");"
+                ]
+        },
+        "LazySpec typing": {
+                "prefix": "lzsp",
+                "body": [
+                        "---@module 'lazy'",
+                        "---@type LazySpec"
+                ]
+        },
+        "Arrange-Act-Assert test suite": {
+                "prefix": "aaa",
+                "body": [
+                        "// * Arrange",
+                        "// ! Act",
+                        "// ? Assert"
+                ]
+        },
+        "Test comments": {
+                "prefix": "tecc",
+                "body": [
+                        "// Setup",
+                        "// * Fixturing",
+                        "// ! Executing",
+                        "// ? Verification"
+                ]
+        },
+        "Generated files": {
+                "prefix": "parg",
+                "scope": "dart,flutter",
+                "body": "part '${TM_FILENAME/[\\.]/.g./}';"
+        },
+        "Generated freezed files": {
+                "prefix": "freg",
+                "scope": "dart,flutter",
+                "body": "part '${TM_FILENAME/[\\.]/.freezed./}';"
+        },
+        "Emitter typedef for BLoC": {
+                "prefix": "emti",
+                "scope": "dart,flutter",
+                "body": "typedef _EmitterT = Emitter<${0}State>;"
+        },
+        "BLoC event handler declaration": {
+                "prefix": "blov",
+                "scope": "dart,flutter",
+                "body": [
+                        "${1|Future,void|} _${2:functionName}(${3:BlocName}Event event, _EmitterT emit)${4| , async |}{",
+                        "\t ${0}",
+                        "}"
+                ]
+        },
+        "Context extention": {
+                "prefix": "conec",
+                "body": "import 'package:comfortech_app/core/extentions/build_context.dart';",
+                "scope": "dart,flutter"
+        },
+        "Dependencies comment line": {
+                "prefix": "depc",
+                "body": "/* ------------------------------ Dependencies ------------------------------ */"
+        },
+        "Constructor comment line": {
+                "prefix": "conc",
+                "body": "/* ------------------------------- Constructor ------------------------------ */"
+        },
+        "Implementation comment line": {
+                "prefix": "impc",
+                "body": "/* ----------------------------- Implementation ----------------------------- */"
+        },
+        "Insert task list": {
+                "prefix": "task",
+                "body": [
+                        "- [${1| ,x|}] ${2:text}",
+                        "${0}"
+                ]
+        },
+        "BlocBuilder snippet": {
+                "prefix": "bbuild",
+                "body": [
+                        "${1|return , |}BlocBuilder<${2:Name}${3|Bloc,Cubit|}, ${2:Name}State>(",
+                        "  builder: (context, state) {",
+                        "    return ${0:Container()};",
+                        "  },",
+                        ");"
+                ],
+                "scope": "dart,flutter"
+        },
+        "@override Widget build() method": {
+                "prefix": "build",
+                "scope": "dart,flutter",
+                "body": [
+                        "@override",
+                        "Widget build(BuildContext context) {",
+                        " return Container();",
+                        "}"
+                ]
+        },
+        "Abstract class definition": {
+                "prefix": "abcs",
+                "scope": "dart,flutter",
+                "body": [
+                        "abstract class ${1:ClassName} {",
+                        "  ${0}",
+                        "}"
+                ]
+        },
+        "Interface class": {
+                "prefix": "proto",
+                "scope": "dart,flutter",
+                "body": [
+                        "abstract interface class ${1:ClassName} {",
+                        "  ${0}",
+                        "}"
+                ]
+        },
+        "Implementation of class definition": {
+                "prefix": "impl",
+                "scope": "dart,flutter",
+                "body": [
+                        "class ${1:ClassName} implements ${2:InterfaceClass} {",
+                        "  ${0}",
+                        "}"
+                ]
+        },
+        "Future function": {
+                "prefix": "future",
+                "scope": "dart,flutter",
+                "body": "Future ${2}() async {}"
+        },
+        "App Localizations for Flutter": {
+                "prefix": "locale",
+                "scope": "dart,flutter",
+                "body": "AppLocalizations.of(context).${1:value}"
+        },
+        "App Localizations import": {
+                "prefix": "locale-import",
+                "scope": "dart,flutter",
+                "body": "import 'package:comfortech_app/l10n/app_localizations.dart';"
+        },
+        "extends StatelessWidget": {
+                "prefix": "stateless",
+                "scope": "dart,flutter",
+                "body": [
+                        "class ${ClassName} extends StatelessWidget {",
+                        "  const ${ClassName}({Key? key}) : super(key: key);",
+                        "",
+                        "  @override",
+                        "  Widget build(BuildContext context) {",
+                        "    return Container();",
+                        "  }",
+                        "}"
+                ]
+        },
+        "UseCase fast code": {
+                "prefix": "ucsa",
+                "scope": "dart,flutter",
+                "body": [
+                        "class ${Name}UseCase extends UseCase<${ReturnType}, ${ParamsType}> {",
+                        "/* ------------------------------- Constructor ------------------------------ */",
+                        "  ${Name}UseCase();",
+                        "/* ----------------------------- Implementation ----------------------------- */",
+                        "  @override",
+                        "  ApiTask<${ReturnType}> call(${ParamsType} params) {",
+                        "  // TODO: implement call",
+                        "  throw UnimplementedError();",
+                        "  }",
+                        "}"
+                ]
+        },
+        "Test mocked entity": {
+                "prefix": "tmen",
+                "scope": "dart,flutter",
+                "body": [
+                        "test('$1', () ${2:async }{",
+                        "\t// Setup",
+                        "\t$3",
+                        "\t// * Fixturing",
+                        "\t$0",
+                        "\t// ! Executing",
+                        "\t// ? Verification",
+                        "});"
+                ]
+        },
+        "Test grouped entities": {
+                "prefix": "gpt",
+                "scope": "dart,flutter",
+                "body": [
+                        "group('[$1] ->', () {",
+                        "  $0",
+                        "});"
+                ]
+        },
+        "Pastes MIT license header": {
+                "prefix": "temrsmit",
+                "body": [
+                        "// MIT License",
+                        "",
+                        "// Copyright (c) 2025 Dipal Comfortel",
+                        "",
+                        "// Permission is hereby granted, free of charge, to any person obtaining a copy",
+                        "// of this software and associated documentation files (the \"Software\"), to deal",
+                        "// in the Software without restriction, including without limitation the rights",
+                        "// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+                        "// copies of the Software, and to permit persons to whom the Software is",
+                        "// furnished to do so, subject to the following conditions:",
+                        "",
+                        "// The above copyright notice and this permission notice shall be included in all",
+                        "// copies or substantial portions of the Software.",
+                        "",
+                        "// THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR",
+                        "// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,",
+                        "// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE",
+                        "// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER",
+                        "// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,",
+                        "// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE",
+                        "// SOFTWARE."
+                ]
+        }
+}
