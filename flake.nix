@@ -27,13 +27,23 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/vm/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.weissmall = import ./home/weissmall/home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-            }
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.weissmall = import ./home/weissmall/home.nix;
+            #   home-manager.extraSpecialArgs = { inherit inputs; };
+            # }
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        weissmall = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home/weissmall/home.nix
           ];
         };
       };

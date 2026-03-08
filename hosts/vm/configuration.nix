@@ -25,14 +25,19 @@
 #   system.stateVersion = "24.05";
 # }
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # ./weiss.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # ./weiss.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -66,8 +71,12 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "weissmall";
-    extraGroups = [ "networkmanager" "wheel" "vboxguest" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "vboxguest"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -81,20 +90,14 @@
   # ];
 
   environment.systemPackages = with pkgs; [
-		git
-		yadm
-		ghostty
-		alacritty
-		fuzzel
-		neovim
-		xwayland-satellite
-		qt6.qtwayland
-    cargo
-		mesa-demos
-		mesa
-		linuxPackages.virtualboxGuestAdditions
+    xwayland-satellite
+    qt6.qtwayland
+    mesa-demos
+    mesa
+    linuxPackages.virtualboxGuestAdditions
+    git
+    inputs.home-manager.packages.x86_64-linux.default
   ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -123,17 +126,16 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
-
   # VM Specific
-	virtualisation.virtualbox.guest = {
-		enable = true;
-		# x11 = true;
-	};
+  virtualisation.virtualbox.guest = {
+    enable = true;
+    # x11 = true;
+  };
 
-	services.xserver.videoDrivers = ["virtualbox"];
+  services.xserver.videoDrivers = [ "virtualbox" ];
 
-	# hardware.graphics.enable = true;
-	# hardware.graphics.enable32Bit = true;
+  # hardware.graphics.enable = true;
+  # hardware.graphics.enable32Bit = true;
 
   # LY
   services.displayManager.ly.enable = true;
@@ -151,5 +153,8 @@
   programs.nix-ld.enable = true;
 
   security.polkit.enable = true;
-	nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }
