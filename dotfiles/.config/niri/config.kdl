@@ -28,7 +28,7 @@ spawn-at-startup "kanshi"
 // blueman-tray 52MiB RAM
 // blueman-applet 56MiB RAM
 spawn-at-startup "ags3" "run" "--gtk" "4"
-spawn-at-startup "bash" "-c" "/home/weissmall/Projects/ags-transfer/build/ags-shell"
+// spawn-at-startup "bash" "-c" "/home/weissmall/Projects/ags-transfer/build/ags-shell"
 // spawn-at-startup "caelestia" "shell" "-d"
 // spawn-at-startup "zsh" "c" "QT_QPA_PLATFORM=wayland caelestia shell -d"
 
@@ -42,14 +42,14 @@ spawn-at-startup "birdtray"
 spawn-at-startup "waypaper" "--restore"
 
 // Cliphist watch
-spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch pkill -RTMIN+9 waybar"
+// spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch pkill -RTMIN+9 waybar"
 spawn-at-startup "bash" "-c" "[ -x \"$(command -v wl-paste)\" ] && [ -x \"$(command -v cliphist)\" ] && wl-paste --watch cliphist store"
 
 // Notifications
 // spawn-at-startup "bash" "-c" "[ -x \"$(command -v dunst)\" ] && pkill dunst; dunst"
 
 // Conky
-spawn-at-startup "bash" "-c" "$HOME/.config/niri/conky.sh"
+// spawn-at-startup "bash" "-c" "$HOME/.config/niri/conky.sh"
 
 /* -------------------------------------------------------------------------- */
 
@@ -406,8 +406,7 @@ binds {
     Super+Shift+P { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showWindow"; }
 
     // Drun menu
-    Super+D { spawn "fuzzel"; }
-    // Super+D { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showDrun"; }
+    Super+D { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showDrun"; }
 
     // Ssh menu
     Super+Shift+S { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showSsh"; }
@@ -458,8 +457,6 @@ binds {
     // Mod+D { spawn "fuzzel"; }
     // set $rofiDrun "pkill rofi || $HOME/.config/rofi/launcher.sh showDrun"
 
-    // Mod+D { spawn "bash" "-c" "pkill rofi || $HOME/.config/rofi/launcher.sh showDrun"; }
-    Super+Alt+L { spawn "swaylock"; }
     Super+Return { spawn "alacritty"; }
     // Super+Return { spawn "ghostty"; }
 

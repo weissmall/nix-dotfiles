@@ -148,6 +148,8 @@
   # niri
   programs.niri.enable = true;
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
+
   security.polkit.enable = true;
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 }

@@ -13,7 +13,13 @@
   };
 
   home.packages = with pkgs; [
-    firefox
+    librewolf
+    ripgrep
+    fzf
+    cmake
+    gnumake
+    gcc
+    rofi
   ];
 
   imports = [

@@ -9,5 +9,10 @@
       source = ../../dotfiles/.config/niri;
       recursive = true;
     };
+
+    "rofi" = {
+      source = ../../dotfiles/.config/rofi;
+      recursive = true;
+    };
   };
 }
