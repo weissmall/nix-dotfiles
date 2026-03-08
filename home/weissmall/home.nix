@@ -24,7 +24,6 @@
     cmake
     gnumake
     rustup
-    # cargo
     jsoncpp
     plantuml
     imv
@@ -32,7 +31,6 @@
     gcc
 
     # Software
-    # onlyoffice
     onlyoffice-desktopeditors
     # obsidian
     librewolf
@@ -43,6 +41,13 @@
 		yadm
 		ghostty
 		alacritty
+
+    # Fonts
+    font-awesome
+    noto-fonts
+    material-design-icons
+    nerd-fonts.jetbrains-mono
+    dejavu_fonts
   ];
 
   imports = [
@@ -61,4 +66,5 @@
   #     source ~/.config/zsh/rc.zsh
   #   '';
   # };
+  fonts.fontconfig.enable = true;
 }
