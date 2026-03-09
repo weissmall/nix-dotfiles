@@ -19,7 +19,7 @@
     rofi
 
     # Neovim
-		neovim
+    neovim
     fzf
     cmake
     gnumake
@@ -37,10 +37,10 @@
     qbittorrent
 
     # Other
-		git
-		yadm
-		ghostty
-		alacritty
+    git
+    yadm
+    ghostty
+    alacritty
 
     # Fonts
     font-awesome
@@ -51,20 +51,19 @@
   ];
 
   imports = [
-    ./dotfiles.nix
     ../modules/zsh.nix
   ];
 
-  # home.file.".config/zsh" = {
-  #   source = "${inputs.zsh-dotfiles}";
-  #   recursive = true;
-  # };
-  #
-  # programs.zsh = {
-  #   enable = true;
-  #   initExtra = ''
-  #     source ~/.config/zsh/rc.zsh
-  #   '';
-  # };
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "weissmall";
+        email = "dany.weissmall@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+  };
+
   fonts.fontconfig.enable = true;
 }
