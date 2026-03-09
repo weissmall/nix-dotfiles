@@ -51,7 +51,6 @@
   ];
 
   imports = [
-    ./dotfiles.nix
     ../modules/zsh.nix
   ];
 

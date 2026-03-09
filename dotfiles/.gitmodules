@@ -1,3 +1,0 @@
-[submodule ".config/ags"]
-	path = .config/ags
-	url = https://github.com/weissmall/ags-dotfiles.git

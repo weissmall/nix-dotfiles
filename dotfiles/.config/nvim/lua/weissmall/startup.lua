@@ -1,2 +1,0 @@
--- Toggle Nvim Tree
--- vim.cmd.NvimTreeToggle()

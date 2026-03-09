@@ -6,8 +6,6 @@
   ...
 }:
 {
-  # shell = pkgs.zsh;
-
   home.packages = with pkgs; [
     zsh
     starship
