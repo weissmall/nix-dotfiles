@@ -11,6 +11,8 @@
       url = "github:weissmall/zsh-dotfiles";
       flake = false;
     };
+    astal.url = "github:aylur/astal";
+    ags.url = "github:aylur/ags"; 
   };
 
   outputs =

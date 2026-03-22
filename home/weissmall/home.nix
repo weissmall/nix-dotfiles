@@ -32,6 +32,8 @@
 
     # Software
     onlyoffice-desktopeditors
+    telegram-desktop
+
     # obsidian
     librewolf
     qbittorrent
@@ -52,6 +54,7 @@
 
   imports = [
     ../modules/zsh.nix
+    ../modules/ags.nix
   ];
 
   programs.git = {
