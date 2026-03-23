@@ -6,12 +6,22 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  [
+    ./nvidia-40.nix
+    ./common.nix
+    ./hardware-configuration.nix
+  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Grub setup
+  boot.loader.systemd-boot.enable = false;
+  
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";   # EFI install
+    useOSProber = true; # detect Windows
+  };
+  
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "alfheim"; # Define your hostname.
@@ -38,23 +48,12 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.weissmall = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "weissmall";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    xwayland-satellite
-    qt6.qtwayland
-    git
-    inputs.home-manager.packages.x86_64-linux.default
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -82,45 +81,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
-  # LY
-  services.displayManager.ly.enable = true;
-  services.displayManager.ly.x11Support = true;
-  services.displayManager.ly.settings = {
-    animation = "matrix";
-    animate = false;
-    clock = true;
-    load = false;
-  };
-
-  # niri
-  programs.niri.enable = true;
-  programs.zsh.enable = true;
-  programs.nix-ld.enable = true;
-
-  security.polkit.enable = true;
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Nvidia
-  hardware.graphics = {
-    enable = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement = {
-      enable = false;
-      finegrained = false;
-    };
-
-    open = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
 }

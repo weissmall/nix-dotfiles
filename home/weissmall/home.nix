@@ -15,6 +15,9 @@
   };
 
   home.packages = with pkgs; [
+    # Shell
+    eza
+
     # Env
     rofi
 
@@ -50,12 +53,24 @@
     material-design-icons
     nerd-fonts.jetbrains-mono
     dejavu_fonts
+
+    # Other
+    swww
+    waypaper
+    wl-clipboard
+    zoxide
+    swaylock-effects
+    starship
   ];
 
   imports = [
-    ../modules/zsh.nix
+    # ../modules/zsh.nix
     ../modules/ags.nix
   ];
+
+  programs.starship = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
