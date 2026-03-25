@@ -1,10 +1,14 @@
-{ inputs, ... }: {
+{ pkgs, inputs, ... }: {
   # System packages
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     qt6.qtwayland
     git
     inputs.home-manager.packages.x86_64-linux.default
+    # Steam
+    steam
+    vulkan-loader
+    vulkan-tools
   ];
 
   # Allow unfree packages
@@ -35,4 +39,18 @@
     clock = true;
     load = false;
   };
+
+  # Steam
+  programs.steam = {
+    enable = true;
+  };
+
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
+
+  virtualisation.docker.enable = true;
 }
