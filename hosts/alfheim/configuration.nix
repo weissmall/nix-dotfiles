@@ -2,11 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-  [
+  imports = [
     ./nvidia-40.nix
     ./common.nix
     ./hardware-configuration.nix
@@ -14,14 +18,14 @@
 
   # Grub setup
   boot.loader.systemd-boot.enable = false;
-  
+
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
-    device = "nodev";   # EFI install
+    device = "nodev"; # EFI install
     useOSProber = true; # detect Windows
   };
-  
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "alfheim"; # Define your hostname.
@@ -33,6 +37,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
+  # Keyring
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Minsk";
@@ -51,9 +62,15 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "weissmall";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+    packages = with pkgs; [ ];
   };
+
+  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

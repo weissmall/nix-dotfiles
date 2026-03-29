@@ -21,6 +21,8 @@
     btop
     tmux
     zellij
+    openssl
+    git-filter-repo
 
     # Env
     rofi
@@ -41,6 +43,8 @@
     # Software
     onlyoffice-desktopeditors
     telegram-desktop
+    mongodb-compass
+    # beekeeper-studio
 
     # obsidian
     librewolf
@@ -72,11 +76,16 @@
     networkmanagerapplet
     cliphist
     freelens-bin
-    television
     opencode
     kubectl
     obsidian
+    jq
 
+    podman
+    podman-compose
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    seahorse
   ];
 
   imports = [
@@ -84,6 +93,8 @@
     ../modules/ags.nix
     ../modules/zellij.nix
     ../modules/environment.nix
+    ../modules/television.nix
+    # ../modules/noctalia.nix
     inputs.zen-browser.homeModules.beta
   ];
 
