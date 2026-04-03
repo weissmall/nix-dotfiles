@@ -6,15 +6,22 @@
 }:
 
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
 
-  nixpkgs.config.allowUnfree = true;
   home.username = "weissmall";
   home.homeDirectory = "/home/weissmall";
   home.stateVersion = "25.11";
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    JAVA_HOME = "${pkgs.jdk17}";
   };
 
+  home.sessionVariables = {
+    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+  };
   home.packages = with pkgs; [
     # Shell
     eza
@@ -86,6 +93,16 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     seahorse
+
+    vivaldi
+
+    # Flutter
+    # flutter329
+    fvm
+    firebase-tools
+    android-studio
+    android-tools
+    jdk17
   ];
 
   imports = [
@@ -119,4 +136,6 @@
   };
 
   fonts.fontconfig.enable = true;
+
+  # services.gnome-keyring.enable = true;
 }

@@ -11,6 +11,7 @@
 
 {
   imports = [
+    ./android.nix
     ./nvidia-40.nix
     ./common.nix
     ./hardware-configuration.nix
@@ -43,7 +44,11 @@
 
   # Keyring
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    ly.enable = true;
+    ly.enableGnomeKeyring = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Minsk";
