@@ -14,12 +14,8 @@
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags"; 
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nil.url = "github:oxalica/nil";
     noctalia = {

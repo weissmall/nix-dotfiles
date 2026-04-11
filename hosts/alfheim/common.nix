@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   # System packages
   environment.systemPackages = with pkgs; [
     xwayland-satellite
@@ -49,8 +50,11 @@
     enable = true;
     plugins = with pkgs; [
       networkmanager-openvpn
+      networkmanager-ssh
+      networkmanager-l2tp
     ];
   };
+  services.strongswan.enable = true;
 
   virtualisation.docker.enable = true;
   services.tailscale.enable = true;

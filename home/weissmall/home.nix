@@ -24,6 +24,7 @@
   };
   home.packages = with pkgs; [
     # Shell
+    unzip
     eza
     btop
     tmux
@@ -50,7 +51,6 @@
     # Software
     onlyoffice-desktopeditors
     telegram-desktop
-    mongodb-compass
     # beekeeper-studio
 
     # obsidian
@@ -95,6 +95,8 @@
     seahorse
 
     vivaldi
+    # xfce.thunar
+    nautilus
 
     # Flutter
     # flutter329
@@ -103,22 +105,23 @@
     android-studio
     android-tools
     jdk17
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    yaak
   ];
 
   imports = [
-    # ../modules/zsh.nix
     ../modules/ags.nix
     ../modules/zellij.nix
     ../modules/environment.nix
     ../modules/television.nix
-    # ../modules/noctalia.nix
-    inputs.zen-browser.homeModules.beta
+    ../modules/mongodb-compass.nix
+    ../modules/obs-studio.nix
   ];
 
-  programs.zen-browser = {
-    enable = true;
-    setAsDefaultBrowser = true;
-  };
+  # programs.zen-browser = {
+  #   enable = true;
+  #   setAsDefaultBrowser = true;
+  # };
 
   programs.starship = {
     enable = true;
@@ -137,5 +140,11 @@
 
   fonts.fontconfig.enable = true;
 
-  # services.gnome-keyring.enable = true;
+  services.gnome-keyring = {
+    enable = true;
+    components = [
+      "secrets"
+      "ssh"
+    ];
+  };
 }

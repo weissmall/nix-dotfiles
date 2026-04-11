@@ -15,6 +15,7 @@
     ./nvidia-40.nix
     ./common.nix
     ./hardware-configuration.nix
+    ./network.nix
   ];
 
   # Grub setup
@@ -25,9 +26,12 @@
     efiSupport = true;
     device = "nodev"; # EFI install
     useOSProber = true; # detect Windows
+    gfxmodeEfi = "1920x1080";
+    gfxpayloadEfi = "keep"; # or "text"
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.theme = "/home/weissmall/nix-dotfiles/hosts/grub-theme/1080p/Particle-circle-sidebar";
 
   networking.hostName = "alfheim"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -37,17 +41,31 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+  # networking.networkmanager.plugins = [];
 
   # Bluetooth
   hardware.bluetooth.enable = true;
 
   # Keyring
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
   security.pam.services = {
     login.enableGnomeKeyring = true;
     ly.enable = true;
     ly.enableGnomeKeyring = true;
+  };
+
+  services.dbus = {
+    enable = true;
+    packages = [
+      pkgs.gnome-keyring
+      pkgs.gcr
+    ];
+  };
+  systemd.user.services.gnome-keyring = {
+    wantedBy = [ "default.target" ];
   };
 
   # Set your time zone.
