@@ -14,5 +14,21 @@
     };
   };
   services.strongswan.enable = true;
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring = {
+  #   enable = true;
+  # };
+  # systemd.user.services.gnome-keyring = {
+  #   wantedBy = [ "default.target" ];
+  # };
+
+  security.polkit.enable = true;
+  # programs.nm-applet.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = [
+      pkgs.gnome-keyring
+      pkgs.gcr
+    ];
+  };
 }

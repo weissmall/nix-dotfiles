@@ -46,16 +46,8 @@
     enable = true;
   };
 
-  networking.networkmanager = {
-    enable = true;
-    plugins = with pkgs; [
-      networkmanager-openvpn
-      networkmanager-ssh
-      networkmanager-l2tp
-    ];
-  };
-  services.strongswan.enable = true;
-
   virtualisation.docker.enable = true;
   services.tailscale.enable = true;
+
+  services.gvfs.enable = true;
 }

@@ -48,24 +48,10 @@
   hardware.bluetooth.enable = true;
 
   # Keyring
-  services.gnome.gnome-keyring = {
-    enable = true;
-  };
   security.pam.services = {
     login.enableGnomeKeyring = true;
     ly.enable = true;
     ly.enableGnomeKeyring = true;
-  };
-
-  services.dbus = {
-    enable = true;
-    packages = [
-      pkgs.gnome-keyring
-      pkgs.gcr
-    ];
-  };
-  systemd.user.services.gnome-keyring = {
-    wantedBy = [ "default.target" ];
   };
 
   # Set your time zone.

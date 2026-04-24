@@ -97,6 +97,8 @@
     vivaldi
     # xfce.thunar
     nautilus
+    nautilus-python
+    nautilus-open-any-terminal
 
     # Flutter
     # flutter329
@@ -107,7 +109,20 @@
     jdk17
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     yaak
+    gvfs
+    dconf-editor
+    vlc
+    lua-language-server
+    mqtt-explorer
   ];
+
+  dconf.settings = {
+    "com/github/stunkymonkey/nautilus-open-any-terminal" = {
+      terminal = "ghostty";
+      keybindings = "<Ctrl><Alt>t";
+      new-tab = true;
+    };
+  };
 
   imports = [
     ../modules/ags.nix
@@ -117,11 +132,6 @@
     ../modules/mongodb-compass.nix
     ../modules/obs-studio.nix
   ];
-
-  # programs.zen-browser = {
-  #   enable = true;
-  #   setAsDefaultBrowser = true;
-  # };
 
   programs.starship = {
     enable = true;
@@ -147,4 +157,7 @@
       "ssh"
     ];
   };
+
+  # programs.nm-applet.enable = true;
+  programs.direnv.enable = true;
 }

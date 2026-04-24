@@ -13,6 +13,7 @@
         imv
         ripgrep
         gcc
+        lua-language-server
       ];
   };
 }
