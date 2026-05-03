@@ -46,7 +46,7 @@
     imv
     ripgrep
     gcc
-    inputs.nil.packages.${pkgs.system}.default
+    inputs.nil.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Software
     onlyoffice-desktopeditors
@@ -114,6 +114,7 @@
     vlc
     lua-language-server
     mqtt-explorer
+    bitwarden-desktop
   ];
 
   dconf.settings = {

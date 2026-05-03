@@ -12,7 +12,7 @@
       flake = false;
     };
     astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags"; 
+    ags.url = "github:aylur/ags";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +21,9 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
     };
   };
 

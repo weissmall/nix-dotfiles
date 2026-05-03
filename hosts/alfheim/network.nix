@@ -11,24 +11,34 @@
       main = {
         plugins = "keyfile";
       };
+      vpn = {
+        plugins = "l2tp";
+      };
     };
   };
-  services.strongswan.enable = true;
-  # services.gnome.gnome-keyring = {
-  #   enable = true;
-  # };
-  # systemd.user.services.gnome-keyring = {
-  #   wantedBy = [ "default.target" ];
-  # };
+
+  environment.systemPackages = with pkgs; [
+    xl2tpd
+    ppp
+    iproute2
+    strongswan
+  ];
+
+  services.strongswan = {
+    enable = true;
+    secrets = [
+      "ipsec.d/ipsec.nm-l2tp.secrets"
+    ];
+  };
 
   security.polkit.enable = true;
-  # programs.nm-applet.enable = true;
 
   services.dbus = {
     enable = true;
     packages = [
       pkgs.gnome-keyring
       pkgs.gcr
+      pkgs.networkmanager-l2tp
     ];
   };
 }
