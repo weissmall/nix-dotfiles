@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./network.nix
     ./nvidia-1650-max.nix
+    ./asus.nix
   ];
 
   # Grub setup
