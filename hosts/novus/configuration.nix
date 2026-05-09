@@ -3,9 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -15,6 +13,7 @@
     ./common.nix
     ./hardware-configuration.nix
     ./network.nix
+    ./nvidia-1650-max.nix
   ];
 
   # Grub setup
