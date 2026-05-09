@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,13 +16,13 @@
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:youwen5/zen-browser-flake/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nil.url = "github:oxalica/nil";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia-shell/v4.7.6";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     niri-flake = {
       url = "github:sodiboo/niri-flake";
