@@ -57,6 +57,13 @@
             ./hosts/alfheim/configuration.nix
           ];
         };
+        novus = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/novus/configuration.nix
+          ];
+        };
       };
 
       homeConfigurations = {
