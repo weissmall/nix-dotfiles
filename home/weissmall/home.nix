@@ -40,6 +40,7 @@
     fzf
     cmake
     gnumake
+    just
     rustup
     jsoncpp
     plantuml
