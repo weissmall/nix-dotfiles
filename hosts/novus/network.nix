@@ -15,6 +15,17 @@
         plugins = "l2tp";
       };
     };
+    wifi.backend = "iwd";
+    wifi.powersave = false;
+  };
+
+  specialisation.chill.configuration = {
+    system.nixos.tags = [ "chill" ];
+    networking.networkmanager.wifi.powersave = true;
+  };
+
+  networking.wireless.iwd = {
+    enable = true;
   };
 
   environment.systemPackages = with pkgs; [

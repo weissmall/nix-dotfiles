@@ -9,6 +9,9 @@
   nixpkgs.config = {
     allowUnfree = true;
     android_sdk.accept_license = true;
+    permittedInsecurePackages = [
+      "beekeeper-studio-5.3.4"
+    ];
   };
 
   home.username = "weissmall";
@@ -116,6 +119,7 @@
     lua-language-server
     mqtt-explorer
     bitwarden-desktop
+    beekeeper-studio
   ];
 
   dconf.settings = {
@@ -133,6 +137,7 @@
     ../modules/television.nix
     ../modules/mongodb-compass.nix
     ../modules/obs-studio.nix
+    ../modules/cursor.nix
   ];
 
   programs.starship = {
