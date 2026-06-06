@@ -111,7 +111,6 @@
     android-studio
     android-tools
     jdk17
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     yaak
     gvfs
     dconf-editor
@@ -138,6 +137,8 @@
     ../modules/mongodb-compass.nix
     ../modules/obs-studio.nix
     ../modules/cursor.nix
+    ../modules/zen-browser.nix
+    # ../modules/virtualbox.nix
   ];
 
   programs.starship = {

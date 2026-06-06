@@ -15,6 +15,8 @@
     ./network.nix
     ./nvidia-1650-max.nix
     ./asus.nix
+    ./virtualisation.nix
+    ./resume.nix
   ];
 
   # Grub setup
@@ -54,7 +56,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Minsk";
+  time.timeZone = "Asia/Tbilisi";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

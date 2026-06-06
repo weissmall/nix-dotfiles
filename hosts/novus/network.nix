@@ -21,7 +21,7 @@
 
   specialisation.chill.configuration = {
     system.nixos.tags = [ "chill" ];
-    networking.networkmanager.wifi.powersave = true;
+    networking.networkmanager.wifi.powersave = false;
   };
 
   networking.wireless.iwd = {
@@ -51,5 +51,12 @@
       pkgs.gcr
       pkgs.networkmanager-l2tp
     ];
+  };
+
+  # L2TP Fixes
+  environment.etc = {
+    "strongswan.conf".text = "";
+
+    "ipsec.d/.keep".text = "";
   };
 }
